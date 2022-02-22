@@ -1,0 +1,80 @@
+﻿using BibliotecaMVC.Models.Contracts.Repositories;
+using BibliotecaMVC.Models.Contracts.Services;
+using BibliotecaMVC.Models.Dtos;
+using System;
+using System.Collections.Generic;
+
+
+namespace BibliotecaMVC.Models.Services
+{
+    public class LivroService : ILivroService
+    {
+        private readonly ILivroRepository _livroRepository;
+
+        public LivroService(ILivroRepository livroRepository)
+        {
+            _livroRepository = livroRepository;   
+        }
+
+        public void Atualizar(LivroDto livro)
+        {
+            try
+            {
+                _livroRepository.Atualizar(livro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Cadastrar(LivroDto livro)
+        {
+            try
+            {
+                _livroRepository.Cadastrar(livro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Excluir(string id)
+        {
+            try
+            {
+                _livroRepository.Excluir(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<LivroDto> Listar()
+        {
+            try
+            {
+                return _livroRepository.Listar();
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public LivroDto PesquisarPorID(string id)
+        {
+            try
+            {
+                return _livroRepository.PesquisarPorID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+    }
+}
